@@ -43,9 +43,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CanRack.cs" />
     <Compile Include="IVendingMachine.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PurchasePriceSoda.cs" />
     <Compile Include="SodaMachine.cs" />
   </ItemGroup>
   <ItemGroup>

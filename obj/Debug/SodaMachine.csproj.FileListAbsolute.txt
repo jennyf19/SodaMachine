@@ -7,3 +7,6 @@ c:\users\ferri\onedrive\documents\visual studio 2015\Projects\Exercise01_SodaMac
 C:\Users\ferri\OneDrive\Documents\Visual Studio 2015\Projects\Lesson 1\Exercise01_SodaMachine\SodaMachine\bin\Debug\SodaMachine.exe.config
 C:\Users\ferri\OneDrive\Documents\Visual Studio 2015\Projects\Lesson 1\Exercise01_SodaMachine\SodaMachine\obj\Debug\SodaMachine.exe
 C:\Users\ferri\OneDrive\Documents\Visual Studio 2015\Projects\Lesson 1\Exercise01_SodaMachine\SodaMachine\obj\Debug\SodaMachine.pdb
+C:\Users\ferri\OneDrive\Documents\Visual Studio 2015\Projects\Lesson 1\Exercise01_SodaMachine\SodaMachine\bin\Debug\SodaMachine.exe
+C:\Users\ferri\OneDrive\Documents\Visual Studio 2015\Projects\Lesson 1\Exercise01_SodaMachine\SodaMachine\bin\Debug\SodaMachine.pdb
+C:\Users\ferri\OneDrive\Documents\Visual Studio 2015\Projects\Lesson 1\Exercise01_SodaMachine\SodaMachine\obj\Debug\SodaMachine.csprojResolveAssemblyReference.cache
