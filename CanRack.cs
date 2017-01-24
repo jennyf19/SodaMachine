@@ -2,9 +2,6 @@
 //Soda Machine Exercise 02
 using System;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using static SodaMachine.Can;
 
 namespace SodaMachine
 {

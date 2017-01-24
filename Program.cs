@@ -2,7 +2,6 @@
 //Soda Machine Exercise 02
 
 using System;
-using static SodaMachine.Can;
 
 namespace SodaMachine
 {

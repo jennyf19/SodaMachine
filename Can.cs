@@ -3,15 +3,15 @@
 
 namespace SodaMachine
 {
+    public enum Flavor
+    {
+        regular,
+        diet,
+        fanta
+    }
+
     class Can
     {
-        public enum Flavor
-        {
-            regular, 
-            diet,
-            fanta
-        }
-
         public readonly Flavor TheFlavor = Flavor.regular;
 
         public Can()
