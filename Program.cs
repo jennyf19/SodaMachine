@@ -21,31 +21,51 @@ namespace SodaMachine
 
                 if (userInput.Equals("y") || userInput.Equals("Y"))
                 {
+                    sodaRack.DisplayCanRack();
+
                     Console.WriteLine("Please insert your money {0:c}", sodaPrice.PriceDecimal);
-                    decimal valueInserted = decimal.Parse(Console.ReadLine());
 
-                    Console.WriteLine("You inserted {0:c}", valueInserted);
+                    decimal valueInserted = 0M;
 
-                    Console.WriteLine("There are three racks of soda(regular, diet, fanta), which one would you like?");
-                    string userChoice = Console.ReadLine();
+                    while (valueInserted < sodaPrice.PriceDecimal)
+                    {
+                        string coinNameInserted = Console.ReadLine().ToUpper();
+                        Coin coinInserted = new Coin(coinNameInserted);
 
-                    if (userChoice == "regular")
-                    {
-                        sodaRack.RemoveACanOf(Flavor.regular);
+                        Console.WriteLine("You inserted {0:c}", coinInserted);
+
+                        valueInserted += coinInserted.ValueOfCoin;
+
+                        Console.WriteLine("You have inserted {0:c}", valueInserted);
                     }
-                    else if (userChoice == "diet")
+
+                    Boolean canDispense = false;
+                    while (!canDispense)
                     {
-                        sodaRack.RemoveACanOf(Flavor.diet);
+                        Console.WriteLine("There are three racks of soda(regular, diet, fanta), which one would you like?");
+                        string userChoice = Console.ReadLine();
+
+                        if (userChoice == "regular")
+                        {
+                            sodaRack.RemoveACanOf(Flavor.regular);
+                            canDispense = true;
+                        }
+                        else if (userChoice == "diet")
+                        {
+                            sodaRack.RemoveACanOf(Flavor.diet);
+                            canDispense = true;
+                        }
+                        else if (userChoice == "fanta")
+                        {
+                            sodaRack.RemoveACanOf(Flavor.fanta);
+                            canDispense = true;
+                        }
+                        else
+                        {
+                            Console.WriteLine("Enter a type of soda (regular, diet, fanta)");
+                        }
+                        Console.WriteLine("Thanks for coming. Here is your can of {0} soda", userChoice);
                     }
-                    else if (userChoice == "fanta")
-                    {
-                        sodaRack.RemoveACanOf(Flavor.fanta);
-                    }
-                    else
-                    {
-                        Console.WriteLine("Enter a type of soda (regular, diet, fanta)");
-                    }
-                    Console.WriteLine("Thanks for coming. Here is your can of {0} soda", userChoice);
                 }
                 else
                 {

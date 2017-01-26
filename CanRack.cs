@@ -7,18 +7,30 @@ namespace SodaMachine
 {
     class CanRack
     {
+        private int[] rack = new int[Enum.GetValues(typeof(Flavor)).Length];
         private const int emptyBin = 0;
         private const int binSize = 3;
 
-        private int regular = emptyBin;
-        private int diet = emptyBin;
-        private int fanta = emptyBin;
+        //private int regular = emptyBin;
+        //private int diet = emptyBin;
+        //private int fanta = emptyBin;
 
         private const int dummyArgument = 0;
 
         public CanRack()
         {
             FillTheCanRack();
+        }
+
+        public void DisplayCanRack()
+        {
+            Console.WriteLine("Can Rack contents: ");
+            foreach(string flavor in Enum.GetNames(typeof(Flavor)))
+            {
+                Flavor flavorEnum = (Flavor)Enum.Parse(typeof(Flavor), flavor);
+                int flavorType = (int)flavorEnum;
+                Console.WriteLine(flavor + "\n" + rack[flavorType]);
+            }
         }
 
         public void AddACanOf(string FlavorOfCanToBeAdded)
@@ -31,17 +43,13 @@ namespace SodaMachine
             {
                 Debug.WriteLine("Adding a can of {0} soda to the rack", FlavorOfCanToBeAdded, dummyArgument);
 
-                if (FlavorOfCanToBeAdded == "regular")
+                Flavor flavorEnum;
+
+                if (Enum.IsDefined(typeof(Flavor), FlavorOfCanToBeAdded))
                 {
-                    regular = regular + 1;
-                }
-                else if (FlavorOfCanToBeAdded == "diet")
-                {
-                    diet = diet + 1;
-                }
-                else if (FlavorOfCanToBeAdded == "fanta")
-                {
-                    fanta = fanta + 1;
+                    flavorEnum = (Flavor)Enum.Parse(typeof(Flavor), FlavorOfCanToBeAdded);
+                    int flavorRack = (int)flavorEnum;
+                    rack[flavorRack]++;
                 }
                 else
                 {
@@ -49,7 +57,7 @@ namespace SodaMachine
                 }
             }
         }
-        
+
         //overloaded method
         public void AddACanOf(Flavor FlavorOfCanToBeAdded)
         {
@@ -64,18 +72,13 @@ namespace SodaMachine
             }
             else
             {
-                Debug.WriteLine("Removing a can of {0} soda from the empty rack", FlavorOfCanToBeRemoved, dummyArgument);
-                if (FlavorOfCanToBeRemoved == "regular")
+                Flavor flavorEnum;
+
+                if (Enum.IsDefined(typeof(Flavor), FlavorOfCanToBeRemoved))
                 {
-                    regular = regular - 1;
-                }
-                else if (FlavorOfCanToBeRemoved == "diet")
-                {
-                    diet = diet - 1;
-                }
-                else if (FlavorOfCanToBeRemoved == "fanta")
-                {
-                    diet = diet - 1;
+                    flavorEnum = (Flavor)Enum.Parse(typeof(Flavor), FlavorOfCanToBeRemoved);
+                    int flavorRack = (int)flavorEnum;
+                    rack[flavorRack]--;
                 }
                 else
                 {
@@ -92,31 +95,22 @@ namespace SodaMachine
         public void FillTheCanRack()
         {
             Debug.WriteLine("Adding soda to the can rack");
-            regular = binSize;
-            diet = binSize;
-            fanta = binSize;
+            foreach (int flavor in Enum.GetValues(typeof(Flavor)))
+            {
+                rack[flavor] = binSize;
+            }
         }
 
         public void EmptyCanRackOf(string FlavorOfBinToBeEmptied)
         {
-            Debug.WriteLine("Removing cans from the rack of {0} soda", FlavorOfBinToBeEmptied, dummyArgument);
-            if (FlavorOfBinToBeEmptied == "regular")
+            if (Enum.IsDefined(typeof(Flavor), FlavorOfBinToBeEmptied))
             {
-                regular = emptyBin;
-            }
-
-            else if (FlavorOfBinToBeEmptied == "diet")
-            {
-                diet = emptyBin;
-            }
-
-            else if (FlavorOfBinToBeEmptied == "fanta")
-            {
-                fanta = emptyBin;
+                Flavor flavorDump = (Flavor)Enum.Parse(typeof(Flavor), FlavorOfBinToBeEmptied);
+                rack[(int)flavorDump] = emptyBin;
             }
             else
             {
-                Debug.WriteLine("please enter a soda: regular, diet or fanta");
+                Debug.WriteLine("Cannot remove the flavor");
             }
         }
 
@@ -124,22 +118,19 @@ namespace SodaMachine
         {
             EmptyCanRackOf(FlavorOfBinToBinToBeEmptied.ToString());
         }
-
+       
         public Boolean IsFull(string FlavorOfBinToCheck)
         {
             Boolean capacity = false;
             Debug.WriteLine("Ok...checking to see if the can rack is full...{0} rack", FlavorOfBinToCheck);
-            if (FlavorOfBinToCheck == "regular")
+
+            Flavor flavorEnum;
+
+            if(Enum.IsDefined(typeof(Flavor), FlavorOfBinToCheck))
             {
-                capacity = regular == binSize;
-            }
-            else if (FlavorOfBinToCheck == "diet")
-            {
-                capacity = diet == binSize;
-            }
-            else if (FlavorOfBinToCheck == "fanta")
-            {
-                capacity = fanta == binSize;
+                flavorEnum = (Flavor)Enum.Parse(typeof(Flavor), FlavorOfBinToCheck);
+                int type = (int)flavorEnum;
+                capacity = rack[type] == binSize;
             }
             else
             {
@@ -157,21 +148,18 @@ namespace SodaMachine
         {
             Boolean capacity = false;
             Debug.WriteLine("Ok...checking to see if the can rack is full...{0} rack", FlavorOfBinToCheck);
-            if (FlavorOfBinToCheck == "regular")
+
+            Flavor flavorEnum;
+
+            if (Enum.IsDefined(typeof(Flavor), FlavorOfBinToCheck))
             {
-                capacity = regular == emptyBin;
-            }
-            else if (FlavorOfBinToCheck == "diet")
-            {
-                capacity = diet == emptyBin;
-            }
-            else if (FlavorOfBinToCheck == "fanta")
-            {
-                capacity = fanta == emptyBin;
+                flavorEnum = (Flavor)Enum.Parse(typeof(Flavor), FlavorOfBinToCheck);
+                int type = (int)flavorEnum;
+                capacity = rack[type] == emptyBin;
             }
             else
             {
-                
+
                 Debug.WriteLine("Couldn't access the rack");
             }
             return capacity;

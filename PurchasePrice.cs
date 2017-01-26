@@ -19,7 +19,7 @@ namespace SodaMachine
         [Obsolete("Use decimal version", false)]
         public PurchasePrice(int initialPrice)
         {
-            price = ((decimal)initialPrice) / 100M;
+            price = initialPrice;
         }
 
         public PurchasePrice(decimal initialPrice)
@@ -27,18 +27,16 @@ namespace SodaMachine
             PriceDecimal = initialPrice;
         }
 
-        private decimal _price;
-
         [Obsolete("Use decimal version", false)]
         public int Price
         {
             get
             {
-                return (int)(_price * 100);
+                return (int)(price * 100);
             }
             set
             {
-                _price = (decimal)(value * .01M);
+                price = (decimal)(value * .01M);
             }
         }
 
@@ -50,7 +48,7 @@ namespace SodaMachine
             }
             set
             {
-                _price = value;
+                price = value;
             }
         }
     }
