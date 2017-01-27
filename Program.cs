@@ -1,5 +1,5 @@
 ﻿//Ferries, Jenny
-//Soda Machine Exercise 02
+//Soda Machine Exercise 04
 
 using System;
 
