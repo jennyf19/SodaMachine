@@ -24,12 +24,10 @@ namespace SodaMachine
 
         public void DisplayCanRack()
         {
-            Console.WriteLine("Can Rack contents: ");
-            foreach(string flavor in Enum.GetNames(typeof(Flavor)))
+            foreach (string flavor in Enum.GetNames(typeof(Flavor)))
             {
                 Flavor flavorEnum = (Flavor)Enum.Parse(typeof(Flavor), flavor);
                 int flavorType = (int)flavorEnum;
-                Console.WriteLine(flavor + "\n" + rack[flavorType]);
             }
         }
 
@@ -118,7 +116,7 @@ namespace SodaMachine
         {
             EmptyCanRackOf(FlavorOfBinToBinToBeEmptied.ToString());
         }
-       
+
         public Boolean IsFull(string FlavorOfBinToCheck)
         {
             Boolean capacity = false;
@@ -126,7 +124,7 @@ namespace SodaMachine
 
             Flavor flavorEnum;
 
-            if(Enum.IsDefined(typeof(Flavor), FlavorOfBinToCheck))
+            if (Enum.IsDefined(typeof(Flavor), FlavorOfBinToCheck))
             {
                 flavorEnum = (Flavor)Enum.Parse(typeof(Flavor), FlavorOfBinToCheck);
                 int type = (int)flavorEnum;

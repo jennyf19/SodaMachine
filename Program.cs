@@ -21,6 +21,8 @@ namespace SodaMachine
 
                 if (userInput.Equals("y") || userInput.Equals("Y"))
                 {
+                    Console.WriteLine("Can Rack contents: ");
+
                     sodaRack.DisplayCanRack();
 
                     Console.WriteLine("Please insert your money {0:c}", sodaPrice.PriceDecimal);
