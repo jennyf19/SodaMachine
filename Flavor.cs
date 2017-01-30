@@ -7,7 +7,7 @@ using System.Diagnostics;
 
 namespace SodaMachine
 {
-    enum Flavor { regular, orange, lemon }
+    enum Flavor { regular, diet, fanta }
 
     static class FlavorOps
     {
@@ -15,7 +15,7 @@ namespace SodaMachine
 
         static FlavorOps()
         {
-            foreach (string flavorName in Enum.GetNames(typeof(Flavor))
+            foreach (string flavorName in Enum.GetNames(typeof(Flavor)))
             {
                 Flavor flavorEnum = ToFlavor(flavorName);
                 _allFlavors.Add(flavorEnum);
