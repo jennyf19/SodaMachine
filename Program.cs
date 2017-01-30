@@ -2,6 +2,7 @@
 //Soda Machine Exercise 04
 
 using System;
+using System.Collections.Generic;
 
 namespace SodaMachine
 {
@@ -11,6 +12,11 @@ namespace SodaMachine
         {
             PurchasePrice sodaPrice = new PurchasePrice(0.35M);
             CanRack sodaRack = new CanRack();
+            CoinBox insertedCoin = new CoinBox(new List<Coin>
+            {
+                new Coin(Coin.Denomination.QUARTER), new Coin(Coin.Denomination.DIME),
+                new Coin(Coin.Denomination.NICKEL)
+            });
 
             while (true)
             {
@@ -35,6 +41,8 @@ namespace SodaMachine
                         Coin coinInserted = new Coin(coinNameInserted);
 
                         Console.WriteLine("You inserted {0:c}", coinInserted);
+
+                        insertedCoin.Deposit(coinInserted);
 
                         valueInserted += coinInserted.ValueOfCoin;
 
@@ -67,6 +75,14 @@ namespace SodaMachine
                             Console.WriteLine("Enter a type of soda (regular, diet, fanta)");
                         }
                         Console.WriteLine("Thanks for coming. Here is your can of {0} soda", userChoice);
+                        Console.WriteLine("Contents of Coin Box:");
+
+                        Console.WriteLine("{0}\tHalf Dollar(s)", insertedCoin.HalfDollarCount);
+                        Console.WriteLine("{0}\tQuarter(s)", insertedCoin.QuarterCount);
+                        Console.WriteLine("{0}\tDime(s)", insertedCoin.DimeCount);
+                        Console.WriteLine("{0}\tNickel(s)", insertedCoin.NickelCount);
+                        Console.WriteLine("{0}\tSlug(s)", insertedCoin.SlugCount);
+                        Console.WriteLine("Total value in coin box is {0:c}", insertedCoin.ValueOf);
                     }
                 }
                 else
