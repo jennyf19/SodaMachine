@@ -3,12 +3,12 @@
 
 namespace SodaMachine
 {
-    public enum Flavor
+    /*public enum Flavor
     {
         regular,
         diet,
         fanta
-    }
+    }*/
 
     class Can
     {
