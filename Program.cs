@@ -52,29 +52,33 @@ namespace SodaMachine
                     Boolean canDispense = false;
                     while (!canDispense)
                     {
-                        Console.WriteLine("There are three racks of soda(regular, diet, fanta), which one would you like?");
-                        string userChoice = Console.ReadLine();
-
-                        if (userChoice == "regular")
+                        Flavor flavorEnum = Flavor.regular;
+                        Boolean flavorChosen = false;
+                        Console.WriteLine("What flavor would you like? ");
+                        while (!flavorChosen)
                         {
-                            sodaRack.RemoveACanOf(Flavor.regular);
-                            canDispense = true;
+                            try
+                            {
+                                string flavorName = Console.ReadLine();
+                                flavorEnum = FlavorOps.ToFlavor(flavorName);
+                                flavorChosen = true;
+                            }
+                            catch (ArgumentException a)
+                            {
+                                Console.WriteLine("Not valid input. please try again", a);
+                            }
                         }
-                        else if (userChoice == "diet")
+                        if (!sodaRack.IsEmpty(flavorEnum))
                         {
-                            sodaRack.RemoveACanOf(Flavor.diet);
-                            canDispense = true;
-                        }
-                        else if (userChoice == "fanta")
-                        {
-                            sodaRack.RemoveACanOf(Flavor.fanta);
+                            sodaRack.RemoveACanOf(flavorEnum);
+                            Console.WriteLine("Here is your can of {0}", flavorEnum);
                             canDispense = true;
                         }
                         else
                         {
-                            Console.WriteLine("Enter a type of soda (regular, diet, fanta)");
+                            Console.WriteLine("Out of {0} !", flavorEnum);
                         }
-                        Console.WriteLine("Thanks for coming. Here is your can of {0} soda", userChoice);
+
                         Console.WriteLine("Contents of Coin Box:");
 
                         Console.WriteLine("{0}\tHalf Dollar(s)", insertedCoin.HalfDollarCount);
@@ -82,6 +86,8 @@ namespace SodaMachine
                         Console.WriteLine("{0}\tDime(s)", insertedCoin.DimeCount);
                         Console.WriteLine("{0}\tNickel(s)", insertedCoin.NickelCount);
                         Console.WriteLine("{0}\tSlug(s)", insertedCoin.SlugCount);
+
+                        Console.WriteLine();
                         Console.WriteLine("Total value in coin box is {0:c}", insertedCoin.ValueOf);
                     }
                 }
